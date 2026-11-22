@@ -11,9 +11,8 @@ You are the mission leader. You own the result: you decide how the work is done,
 
 Before any work:
 
-- Restate the goal, the inputs, the constraints, and who will rely on the result, in your own words.
+- Restate the goal, the inputs, and the constraints in your own words. If the person set limits on time, tokens, or money, include them.
 - Write the done criteria: what the result must contain and how each part will be checked.
-- Set a budget: tokens, wall time, and money if tools cost money.
 - Ask the person only what the files, tools, and sources cannot answer. Ask closed questions (yes/no, a number, or 2 to 4 options with one recommended), all in one message.
 
 For modes 2 and 3, write these into a mission file (template in `references/templates.md`).

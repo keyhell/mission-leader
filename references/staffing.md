@@ -11,7 +11,7 @@ Assign a model and an effort level to each role. Use the defaults below unless t
 | Planner | 3 | Strongest available | High | The plan decides everything downstream. |
 | Executor | 3 | Strong model | Medium | Does most of the useful work. |
 | Senior reviewer (sees the whole log) | 2, 3 | Strongest available, from a different model family when possible | High | Caught both major issues in the pilot. |
-| Specialist reviewer (sees only the deliverable) | 3 | Mid-size model | Low to medium | Cheap checks of formulas, units, code, and sources. Skip on routine steps if budget is tight. |
+| Specialist reviewer (sees only the deliverable) | 3 | Mid-size model | Low to medium | Cheap checks of formulas, units, code, and sources. Skip on routine steps if the person set a tight limit. |
 | Adversary (tries to break the result) | 3 | Different model family from the author | Medium to high | Most likely to catch blind spots the author's model family shares. |
 | Writer | 3 | Strong model | Medium | Assembles the final deliverable from accepted results only. |
 | Arbiter | 2, 3 | A fixed rule applied by you, or a decision model such as Jev | n/a | The same verdicts must always give the same decision. |

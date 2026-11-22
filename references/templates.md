@@ -6,13 +6,11 @@
 # Mission: <short name>
 
 Goal: <one or two sentences>
-Relied on by: <who will use the result, for what decision>
 Inputs: <files, data, sources>
-Constraints: <time, tools, things not to do>
+Constraints: <tools, things not to do, any limits the person set on time, tokens, or money>
 Done criteria:
 1. <checkable criterion>
 2. ...
-Budget: <tokens>, <wall time>, <money>
 Mode: <1 | 2 | 3> because <one line>
 Approver: <person who approves the plan, escalations, and the final result>
 

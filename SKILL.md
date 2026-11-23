@@ -13,7 +13,7 @@ Before any work:
 
 - Restate the goal, the inputs, and the constraints in your own words. If the person set limits on time, tokens, or money, include them.
 - Write the done criteria: what the result must contain and how each part will be checked.
-- Ask the person only what the files, tools, and sources cannot answer. Ask closed questions (yes/no, a number, or 2 to 4 options with one recommended), all in one message.
+- Ask the person only what the files, tools, and sources cannot answer. Ask closed questions (yes/no, a number, or 2 to 4 options with one recommended), all in one message, at the start. This is the last point where you wait for an answer before work begins; never discover a question hours into a run that you could have asked here.
 
 For modes 2 and 3, write these into a mission file (template in `references/templates.md`).
 
@@ -55,7 +55,7 @@ Ask each agent to restate its task in one or two lines at the top of its output.
 
 ## 5. Run and control (mode 3; mode 2 uses the review part)
 
-- **Plan first.** The planner writes subtasks in order, each with a done criterion, the hypotheses to test, and the dependency list (which result each subtask uses). The plan is reviewed before any execution. Show the plan to the person and wait for approval if the mission is costly; otherwise proceed.
+- **Plan first.** The planner writes subtasks in order, each with a done criterion, the hypotheses to test, and the dependency list (which result each subtask uses). The plan is reviewed by the senior reviewer before any execution. Show the plan to the person and proceed without waiting. Wait for the person's approval only if they asked for it in step 1.
 - **Review every result.** See `references/review.md` for reviewer types, the verdict format, and the acceptance rule.
 - **Decide by rule, not by opinion.** Accept an item when no reviewer reports a major issue. Otherwise the author redoes it with the issues attached. After 2 redos, stop and escalate (step 7).
 - **Reopen on evidence.** When an agent or reviewer shows, with evidence, that an earlier accepted result is wrong, mark that result and every result that depends on it as reopened, and redo them in dependency order.
@@ -82,7 +82,7 @@ Stop and ask the person:
 - when reviewers disagree and the acceptance rule cannot decide;
 - when the task turns out to need a decision that belongs to the person (scope, priorities, taste).
 
-Ask closed questions and say what you recommend.
+Ask closed questions and say what you recommend. While you wait, keep working on everything that does not depend on the answer, and use the tool's notification feature if it has one, so the person learns that the mission is waiting.
 
 ## 8. Deliver
 

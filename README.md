@@ -37,3 +37,9 @@ A skill that lets an AI agent decide how to run a task and hold the result to a 
    ```
 
 3. Start a task. The first time the skill runs, it asks a few set-up questions (which models to use and how to reach models from other providers) and, with your OK, saves the answers in that same file.
+
+## Credit and contact
+
+You can use mission-leader for anything, commercial or private, under the [MIT license](LICENSE). If you do, please mention this repository and its author, Alexei Zhurba ([github.com/keyhell/mission-leader](https://github.com/keyhell/mission-leader)).
+
+If you need help, or want to share how you use it, [open an issue](https://github.com/keyhell/mission-leader/issues). I'd like to hear about your case.

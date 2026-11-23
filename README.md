@@ -1,5 +1,10 @@
 # mission-leader
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![Agent Skill](https://img.shields.io/badge/agent-skill-7c3aed)
+![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20opencode%20%C2%B7%20Codex%20%C2%B7%20Cursor-555)
+[![Install](https://img.shields.io/badge/npx-skills%20add%20keyhell%2Fmission--leader-cb3837)](#install)
+
 A skill that lets an AI agent decide how to run a task and hold the result to a checked standard. For each task it picks one of three modes:
 
 1. **Answer directly.** For short, low-stakes tasks that can be checked at a glance. The agent does the work itself, with no review.

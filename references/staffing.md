@@ -20,7 +20,7 @@ Assign a model and an effort level to each role. Use the defaults below unless t
 
 Reviewers from the same model family as the author share its knowledge and blind spots. In order of preference:
 
-1. a reviewer from another provider (for example through opencode);
+1. a reviewer from another model family, called through the recipe in the settings;
 2. a reviewer from the same provider but a different model;
 3. the same model in a fresh context that sees only the artifacts.
 
@@ -30,7 +30,15 @@ Checks that use no language model at all (unit tests, reruns, unit and dimension
 
 **Claude Code and similar tools with subagents.** Spawn each role as a subagent and set its model and effort in the call or in a subagent definition file. Give each subagent only the files its brief names. Run reviewers of the same item in parallel.
 
-**Tools that route to several providers (such as opencode).** Define one agent per role with its provider and model, and use them for the reviewer and adversary roles.
+**Models from another family.** An agent can use another family's model only through something it can call: a command-line tool, an API key, or an MCP tool. Record how as a call recipe in the settings, for example:
+
+- command-line tool: `<tool> run --model <provider/model> -f {files} "{brief}"`
+- API key: a request to the provider's endpoint with the key read from an environment variable or secret, the model name, and the brief and files in the body
+- MCP tool: the tool's name and its model argument
+
+Apps (desktop, phone, or web chat) cannot be called by an agent. A person can paste a brief into an app and the verdict back, but offer that only for the final review, never mid-run, because it makes the mission wait.
+
+The same settings serve every environment, but tools and keys usually exist only where they were installed. Before each mission, test the recipe with a one-line call; if it fails (common in cloud sessions), fall back to option 2 or 3 above and say so in the report.
 
 **Scripted runs.** Some tools can run a fixed multi-agent script deterministically. Offer this for mode 3 when the person wants it; some tools require the person to request it explicitly.
 

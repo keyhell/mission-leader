@@ -35,7 +35,20 @@ Rules:
 
 ## 3. Staff the mission (modes 2 and 3)
 
-First check what this environment offers: can you spawn subagents, which models and effort levels can you set, are models from other providers reachable (for example through opencode), and is a decision model such as Jev available. Then assign roles using `references/staffing.md`.
+Load the settings, check what is available now, then assign roles using `references/staffing.md`.
+
+**Settings.** Look for a "mission-leader settings" section in this order: the organization's instructions, then the project's `AGENTS.md` or `CLAUDE.md`. The settings hold preferences that do not change between environments: the model ranking (strongest, mid, cheap), the call recipe for a model from another family, and whether the person wants to approve plans.
+
+**First run.** If no settings exist and a person is present, ask once, in one message (template in `references/templates.md`):
+
+1. Show the models you can use here (your own model and the choices your agent-spawning tool offers) and propose a ranking from strongest to cheapest. Ask the person to confirm or reorder it.
+2. Ask whether you can call a model from another family, and how: a) a command-line tool; b) an API key; c) an MCP tool; d) no, or only through an app. For a, b, or c, ask for the exact command, endpoint, or tool and the model name, and record it as a call recipe with placeholders for the brief and the files. An app (desktop, phone, or web chat) cannot be called by an agent; treat it as d.
+3. Ask whether they want to approve mission plans before work starts (recommend no).
+4. Ask permission to save the answers as a settings section in the project's `AGENTS.md` or `CLAUDE.md`, which is committed and so reaches both cloud and local sessions. Never save settings inside the skill folder: updates overwrite it.
+
+If no person can answer (scheduled, headless, or subagent runs), do not wait: use safe defaults (your own model for every role, reviews in a fresh context, no other family), say so in the report, and ask at the next interactive session. If there is no project file to write to, ask the person to paste the settings into their project or custom instructions.
+
+**Every run.** Settings say what to prefer; availability changes between environments. Check that each ranked model is offered here, and test the other-family recipe with a one-line call. Use what works. Fall back to the next option in `references/staffing.md` for what does not, and say so in the report. If a spawn is refused, mark that model unavailable for this mission and ask about that one setting at the next interactive session.
 
 - Mode 2: decide whether you do the work or hand it to a stronger worker. Hand it over when the work is above your level: long derivations, long or tricky code, subtle physics or statistics. Spawn one reviewer in a fresh context, from a different model family when one is available.
 - Mode 3: spawn a planner, one executor per subtask, reviewers for each step, and a writer.
@@ -55,7 +68,7 @@ Ask each agent to restate its task in one or two lines at the top of its output.
 
 ## 5. Run and control (mode 3; mode 2 uses the review part)
 
-- **Plan first.** The planner writes subtasks in order, each with a done criterion, the hypotheses to test, and the dependency list (which result each subtask uses). The plan is reviewed by the senior reviewer before any execution. Show the plan to the person and proceed without waiting. Wait for the person's approval only if they asked for it in step 1.
+- **Plan first.** The planner writes subtasks in order, each with a done criterion, the hypotheses to test, and the dependency list (which result each subtask uses). The plan is reviewed by the senior reviewer before any execution. Show the plan to the person and proceed without waiting. Wait for the person's approval only if the settings or the person's answers in step 1 ask for it.
 - **Review every result.** See `references/review.md` for reviewer types, the verdict format, and the acceptance rule.
 - **Decide by rule, not by opinion.** Accept an item when no reviewer reports a major issue. Otherwise the author redoes it with the issues attached. After 2 redos, stop and escalate (step 7).
 - **Reopen on evidence.** When an agent or reviewer shows, with evidence, that an earlier accepted result is wrong, mark that result and every result that depends on it as reopened, and redo them in dependency order.

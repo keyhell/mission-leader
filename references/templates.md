@@ -1,5 +1,27 @@
 # Templates
 
+## Settings section (in the project's `AGENTS.md` or `CLAUDE.md`, or the organization's instructions)
+
+```
+## mission-leader settings
+- Model ranking: strongest = <model> (high effort); mid = <model> (medium); cheap = <model>
+- Other family: <call recipe with {brief} and {files}> | none
+- Plan approval in mode 3: no | yes
+```
+
+## First-run questions
+
+```
+mission-leader: first-time set-up. I checked this environment:
+- Models I can use: <list>. Other families: <found / none found>.
+
+1. Ranking, strongest to cheapest: <proposal>. OK? (yes / your order)
+2. Can I call a model from another family? a) command-line tool; b) API key; c) MCP tool; d) no, or only an app.
+   For a, b, or c: the command, endpoint, or tool, and the model name.
+3. Approve mission plans before work starts? (no, recommended: missions proceed and show you the plan / yes)
+4. Save these answers to <project AGENTS.md or CLAUDE.md>? (yes / no, ask each time)
+```
+
 ## Mission file (`mission.md`)
 
 ```

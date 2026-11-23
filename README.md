@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 ![Agent Skill](https://img.shields.io/badge/agent-skill-red)
-![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20opencode%20%C2%B7%20Codex%20%C2%B7%20Cursor-yellow)
+![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20opencode%20%C2%B7%20Codex%20%C2%B7%20Cursor%20%C2%B7%2075%2B%20more-yellow)
 [![Install](https://img.shields.io/badge/npx-skills%20add%20keyhell%2Fmission--leader-blue)](#install)
 
 A skill that lets an AI agent decide how to run a task and hold the result to a checked standard. For each task it picks one of three modes:

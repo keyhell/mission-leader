@@ -5,7 +5,7 @@
 | Type | Sees | Checks |
 |---|---|---|
 | Senior reviewer | The item and the whole work log: mission file, plan, earlier results, earlier verdicts. | Whether the item meets its done criterion; consistency with earlier results; whether it exposes an error in an earlier accepted result. |
-| Specialist reviewer | The item only, plus the definition of its subtask. | Formulas, units, definitions, numbers (by rerunning the code and recomputing at least one number independently), and whether each cited source exists and says what is claimed. |
+| Specialist reviewer | The item only, plus the definition of its subtask (for the final deliverable: the mission file). | Whether the item answers the problem it was meant to solve, as stated in that definition; formulas, units, definitions, numbers (by rerunning the code and recomputing at least one number independently), and whether each cited source exists and says what is claimed. |
 | Adversary | The item and the mission file. | Tries to break the result: other explanations, counterexamples, edge cases, a quick test run. Reports only what it could break, with evidence. |
 
 Mode 2 uses one reviewer: the senior type, which also does the specialist checks. Mode 3 uses the senior and specialist reviewers on every result, and the adversary on key results, pivots, and the final deliverable. Plans and replans get the senior reviewer only.

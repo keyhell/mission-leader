@@ -64,7 +64,7 @@ Every brief contains:
 - the working rules in section "Working rules" below;
 - what it must not do (read unrelated files, change other agents' outputs, spawn agents).
 
-Ask each agent to restate its task in one or two lines at the top of its output.
+Ask each agent to restate its task and inputs in its own words before it starts, and to put that restatement as the first lines of its output. In mode 3, check the restatement against the brief before accepting the work; a misread task is redone, not reviewed.
 
 ## 5. Run and control (mode 3; mode 2 uses the review part)
 
@@ -80,10 +80,12 @@ Ask each agent to restate its task in one or two lines at the top of its output.
 
 Verification asks whether the work was done right. Validation asks whether the result matches reality. Do both.
 
-- Compare the implementation with the expected or standard approach.
+- Compare the implementation with the expected or standard approach, and with established benchmarks where they exist.
 - Run cases with known answers: analytic solutions, published reference cases, unit tests.
 - Rerun everything from a clean start and confirm every reported number comes from that run.
 - Compare with experimental data where it exists. Label every reference as a **measurement** or **another model**. Agreement with another model is a consistency check, not validation.
+- Use any other available evidence: an independent method, limiting cases, conservation laws, order-of-magnitude estimates.
+- For results that matter, ask a domain expert to check them, or name the expert check that should follow.
 - List what could not be verified or validated.
 
 ## 7. Escalate to a person
@@ -99,6 +101,8 @@ Ask closed questions and say what you recommend. While you wait, keep working on
 
 ## 8. Deliver
 
+Before delivering, check the result against every done criterion from step 1, item by item. Fix what fails, or report it as not met.
+
 Report, in this order:
 
 1. the result, leading with the answer;
@@ -107,6 +111,8 @@ Report, in this order:
 4. the cost: mode, agents, tokens, time.
 
 Separate what was verified from what was assumed. Never present an estimate as a fact.
+
+If the result will drive a decision, ask for review and sign-off by a person or an expert team, and mark the result "not yet reviewed by a person" until that happens. In modes 2 and 3, record who signed off in the mission file.
 
 ## 9. Learn
 

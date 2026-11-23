@@ -8,20 +8,18 @@ A skill that lets an AI agent decide how to run a task and hold the result to a 
 
 ## Install
 
-With Node.js 22.20 or later, run in your project:
+1. Install the skill. With Node.js 22.20 or later, run in your project:
 
-```
-npx skills add keyhell/mission-leader
-```
+   ```
+   npx skills add keyhell/mission-leader
+   ```
 
-Add `-g` to install it for all your projects, and `-a <agent>` to choose the tool (for example `-a claude-code`, `-a opencode`, `-a codex`, `-a cursor`). The installer is the open [skills CLI](https://github.com/vercel-labs/skills).
+   Add `-g` to install it for all your projects, and `-a <agent>` to choose the tool (for example `-a claude-code`, `-a opencode`, `-a codex`, `-a cursor`). The installer is the open [skills CLI](https://github.com/vercel-labs/skills). Without Node.js, copy this repository into your skills folder as `mission-leader`, for example `<project>/.claude/skills/mission-leader/` for Claude Code.
 
-Without Node.js, copy this repository into your skills folder as `mission-leader`, for example `<project>/.claude/skills/mission-leader/` for Claude Code.
+2. Add one line to your `CLAUDE.md` or `AGENTS.md`, so the skill loads whenever it matters:
 
-Then add one line to your `CLAUDE.md` or `AGENTS.md`, so the skill loads whenever it matters:
+   ```
+   For research, simulation or quantitative analysis whose result someone will rely on, use the mission-leader skill.
+   ```
 
-```
-For research, simulation or quantitative analysis whose result someone will rely on, use the mission-leader skill.
-```
-
-The first time the skill runs, it asks a few set-up questions (which models to use and how to reach models from other providers) and, with your OK, saves the answers in that same file.
+3. Start a task. The first time the skill runs, it asks a few set-up questions (which models to use and how to reach models from other providers) and, with your OK, saves the answers in that same file.

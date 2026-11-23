@@ -18,7 +18,12 @@ A skill that lets an AI agent decide how to run a task and hold the result to a 
 
      Add `-g` to install it for all your projects, and `-a <agent>` to choose the tool (for example `-a claude-code`, `-a opencode`, `-a codex`, `-a cursor`). The installer is the open [skills CLI](https://github.com/vercel-labs/skills).
 
-   - **Without Node.js**, copy this repository into your skills folder as `mission-leader`, for example `<project>/.claude/skills/mission-leader/` for Claude Code.
+   - **Without Node.js**, copy this repository into your skills folder as `mission-leader`. For Claude Code:
+
+     - one project: `<project>/.claude/skills/mission-leader/`
+     - all your projects: `~/.claude/skills/mission-leader/`
+
+     For example: `git clone https://github.com/keyhell/mission-leader ~/.claude/skills/mission-leader`
 
 2. Add one line to your `CLAUDE.md` or `AGENTS.md`, so the skill loads whenever it matters:
 

@@ -9,7 +9,7 @@ A skill that lets an AI agent decide how to run a task and hold the result to a 
 
 1. **Answer directly.** For short, low-stakes tasks that can be checked at a glance. The agent does the work itself, with no review.
 2. **Work and review.** The default for most research and analysis. The agent does the work itself or gives it to a stronger model, and an independent reviewer checks the result.
-3. **Mission loop.** For long, multi-stage, or high-stakes work. The agent plans the mission, spawns a worker for each subtask, has every step reviewed, and reopens earlier results when later work shows they were wrong.
+3. **Mission loop.** For long, multi-stage, or high-stakes work. The agent plans the mission, runs subtasks in order of their impact on the result with a worker for each, has every step reviewed, and reopens earlier results when later work shows they were wrong.
 
 ```mermaid
 flowchart LR
@@ -25,7 +25,7 @@ flowchart LR
   end
   subgraph M3["Mode 3 · Mission loop"]
     direction TB
-    P3(["Person<br/>task + start questions"]) --> L3["Leader<br/>routes, applies rules"] --> PL["Planner<br/>subtasks, dependencies"] --> VP["Reviewer<br/>plan"]
+    P3(["Person<br/>task + start questions"]) --> L3["Leader<br/>routes, applies rules"] --> PL["Planner<br/>subtasks ranked by impact<br/>on the result"] --> VP["Reviewer<br/>plan"]
     VP --> EX["Executors<br/>one per subtask"] --> VE["Reviewers<br/>every step"] --> LOG[("Log<br/>results, verdicts, dependencies")]
     VE -. redo .-> EX
     LOG -. reopen .-> EX

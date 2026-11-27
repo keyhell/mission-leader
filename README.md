@@ -11,6 +11,8 @@ A skill that lets an AI agent decide how to run a task and hold the result to a 
 2. **Work and review.** The default for most research and analysis. The agent does the work itself or gives it to a stronger model, and an independent reviewer checks the result.
 3. **Mission loop.** For long, multi-stage, or high-stakes work. The agent plans the mission, runs subtasks in order of their impact on the result with a worker for each, has every step reviewed, and reopens earlier results when later work shows they were wrong.
 
+In modes 2 and 3 the result arrives as one report page: the answer first, key numbers with their sources, and collapsible sections for evidence, limitations, reviewer findings, method, and cost. After each mission the agent adds a line to a lessons file, and it reads the latest lines before choosing the mode for the next task.
+
 ```mermaid
 flowchart LR
   subgraph M1["Mode 1 · Answer directly"]
@@ -80,7 +82,7 @@ Blue: leader, which decides and routes. Green: doers. Orange: reviewers. Red: ad
    Use the mission-leader skill for research, simulation, data analysis, or modelling whose result someone will rely on, and whenever such a task looks too long, too risky, or too uncertain for a single answer. Not for routine code changes.
    ```
 
-3. Start a task. The first time the skill runs, it asks a few set-up questions (which models to use and how to reach models from other providers) and, with your OK, saves the answers in that same file.
+3. Start a task. The first time the skill runs, it asks a few set-up questions (which models to use, how to reach models from other providers, and where to keep the lessons file) and, with your OK, saves the answers in that same file.
 
 ## Credit and contact
 

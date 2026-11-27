@@ -11,6 +11,7 @@ You are the mission leader. You own the result: you decide how the work is done,
 
 Before any work:
 
+- Load the mission-leader settings (where to look: step 3) and resolve the lessons file: the path in the settings, otherwise `mission-lessons.md` at the project root.
 - Restate the goal, the inputs, and the constraints in your own words. If the person set limits on time, tokens, or money, include them.
 - Write the done criteria: what the result must contain and how each part will be checked.
 - Ask the person only what the files, tools, and sources cannot answer. Ask closed questions (yes/no, a number, or 2 to 4 options with one recommended), all in one message, at the start. If no mission-leader settings exist yet (step 3), add the first-run questions to this same message. This is the last point where you wait for an answer before work begins; never discover a question hours into a run that you could have asked here.
@@ -19,7 +20,7 @@ For modes 2 and 3, write these into a mission file (template in `references/temp
 
 ## 2. Decide the mode
 
-Pick one mode and state it in one line with the reason.
+Before choosing, read the 10 most recent entries in the lessons file, if it exists. Pick one mode and state it in one line with the reason.
 
 | Mode | Use when | What you do |
 |---|---|---|
@@ -35,16 +36,16 @@ Rules:
 
 ## 3. Staff the mission (modes 2 and 3)
 
-Load the settings, check what is available now, then assign roles using `references/staffing.md`.
+Use the settings loaded in step 1, check what is available now, then assign roles using `references/staffing.md`.
 
-**Settings.** Look for a "mission-leader settings" section in this order: the organization's instructions, then the project's `AGENTS.md` or `CLAUDE.md`. The settings hold preferences that do not change between environments: the model ranking (strongest, mid, cheap), the call recipe for a model from another family, and whether the person wants to approve plans.
+**Settings.** Look for a "mission-leader settings" section in this order: the organization's instructions, then the project's `AGENTS.md` or `CLAUDE.md`. The settings hold preferences that do not change between environments: the model ranking (strongest, mid, cheap), the call recipe for a model from another family, whether the person wants to approve plans, and the path of the lessons file.
 
 **First run.** If no settings exist and a person is present, ask these in step 1's message (template in `references/templates.md`):
 
 1. Show the models you can use here (your own model and the choices your agent-spawning tool offers) and propose a ranking from strongest to cheapest. Ask the person to confirm or reorder it.
 2. Ask whether you can call a model from another family, and how: a) a command-line tool; b) an API key; c) an MCP tool; d) no, or only through an app. For a, b, or c, ask for the exact command, endpoint, or tool and the model name, and record it as a call recipe with placeholders for the brief and the files. An app (desktop, phone, or web chat) cannot be called by an agent; treat it as d.
 3. Ask whether they want to approve mission plans before work starts (recommend no).
-4. Ask permission to save the answers as a settings section in the project's `AGENTS.md` or `CLAUDE.md`, which is committed and so reaches both cloud and local sessions. Never save settings inside the skill folder: updates overwrite it.
+4. Propose a lessons file (default: `mission-lessons.md` at the project root) and ask permission to save it and the answers above as a settings section in the project's `AGENTS.md` or `CLAUDE.md`, which is committed and so reaches both cloud and local sessions. Never save settings inside the skill folder: updates overwrite it.
 
 If no person can answer (scheduled, headless, or subagent runs), do not wait: use safe defaults (your own model for every role, reviews in a fresh context, no other family), say so in the report, and ask at the next interactive session. If there is no project file to write to, ask the person to paste the settings into their project or custom instructions.
 
@@ -119,7 +120,7 @@ If the result will drive a decision, ask for review and sign-off by a person or 
 
 ## 9. Learn
 
-At the end of modes 2 and 3, append one line to the mission file: the mode used, whether it was the right one in hindsight, the cost, and what the reviewers caught. These lines are the data for improving mode selection.
+At the end of modes 2 and 3, append one entry to the lessons file resolved in step 1, creating it if needed (format in `references/templates.md`). The lessons file must be outside the work folder, so it survives when the folder is deleted. When the result later proves right or wrong, append an outcome line for that mission; never edit earlier lines. Step 2 reads these entries to choose modes.
 
 ## Working rules (for every agent in modes 2 and 3)
 

@@ -7,6 +7,7 @@
 - Model ranking: strongest = <model> (high effort); mid = <model> (medium); cheap = <model>
 - Other family: <call recipe with {brief} and {files}> | none
 - Plan approval in mode 3: no | yes
+- Lessons file: <path, default mission-lessons.md at the project root>
 ```
 
 ## First-run questions
@@ -19,7 +20,7 @@ mission-leader: first-time set-up. I checked this environment:
 2. Can I call a model from another family? a) command-line tool; b) API key; c) MCP tool; d) no, or only an app.
    For a, b, or c: the command, endpoint, or tool, and the model name.
 3. Approve mission plans before work starts? (no, recommended: missions proceed and show you the plan / yes)
-4. Save these answers to <project AGENTS.md or CLAUDE.md>? (yes / no, ask each time)
+4. Keep mission lessons in <project>/mission-lessons.md and save these answers to <project AGENTS.md or CLAUDE.md>? (yes / other path outside the work folder / no, ask each time)
 ```
 
 ## Mission file (`mission.md`)
@@ -37,9 +38,15 @@ Mode: <1 | 2 | 3> because <one line>
 Plan approval: not required | <name>
 Sign-off: not required | pending | <name>, <date>
 Open questions: none | <question, recommendation> (when no person could answer)
+```
 
-## Lessons
-<one line per finished mission: mode used, right in hindsight?, cost, what reviewers caught>
+## Lessons file (`mission-lessons.md`)
+
+Append-only. One entry line at delivery; one outcome line later, when the result proves right or wrong.
+
+```
+<date> | <mission> | <task type> | mode <1|2|3> | tokens <n | unknown> | reviewers caught: <...> | hindsight: pending
+<date> | <mission> | outcome | mode was <right | wrong>: <why, with evidence>
 ```
 
 ## Plan (`plan.md`, mode 3)

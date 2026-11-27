@@ -34,7 +34,9 @@ Done criteria:
 1. <checkable criterion>
 2. ...
 Mode: <1 | 2 | 3> because <one line>
-Approver: <person who approves the plan, escalations, and the final result>
+Plan approval: not required | <name>
+Sign-off: not required | pending | <name>, <date>
+Open questions: none | <question, recommendation> (when no person could answer)
 
 ## Lessons
 <one line per finished mission: mode used, right in hindsight?, cost, what reviewers caught>
@@ -56,17 +58,25 @@ H1. <statement>. Supported if <...>; refuted if <...>.
 S2 <- S1
 S3 <- S1, S2
 
+## Key results and pivots
+S2 (key result), S3 (pivot)
+
 ## Risks
 <risk> -> guarded by <subtask>
 ```
 
-## Cost ledger (`ledger.tsv`)
+## Log (`log.md`)
+
+Optional. When used, the log is one file per mission, append-only, one line per event. You write a `cost` line for every call; agents may append any type to pass information to each other. Never edit earlier lines. Write `unknown` for a value the tool does not report.
 
 ```
-step	role	model	effort	tokens	seconds	outcome
-S1	executor	<model>	medium	181481	279	accepted
-S1	review-senior	<model>	high	121993	293	pass, 0 major / 5 minor
+<date time> | <agent> | <item> | <type> | <text> | <files>
+2026-11-27 14:02 | executor-1 | S2 | result | P_LH computed for 3 cases | items/S2-result.md
+2026-11-27 14:09 | reviewer-senior | S2 | verdict | FAIL: 1 major (injected vs loss power) | items/S2.review-senior.md
+2026-11-27 14:09 | reviewer-senior | S2 | cost | model <model>, effort high, tokens unknown, 412 s |
 ```
+
+Types: `brief`, `result`, `verdict`, `decision`, `question`, `cost`.
 
 ## Work folder layout
 
@@ -74,7 +84,7 @@ S1	review-senior	<model>	high	121993	293	pass, 0 major / 5 minor
 <work folder>/
   mission.md
   plan.md            (mode 3)
-  ledger.tsv
-  log/               results, code, and verdicts, one file per item: S1-result.md, S1.review-senior.md, ...
-  deliverable/       the final result and the script that reproduces its numbers
+  log.md             (optional)
+  items/             briefs, restatements, results, code, and verdicts, one file per item: S1-brief.md, S1-restatement.md, S1-result.md, S1.review-senior.md, ...
+  deliverable/       report.html and the script that reproduces its numbers
 ```

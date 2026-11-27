@@ -30,7 +30,7 @@ flowchart LR
     VE -. redo .-> EX
     LOG -. reopen .-> EX
     A3["Adversary<br/>key steps"] -.- VE
-    LOG --> W["Writer<br/>final report"] --> VF["Reviewers + adversary<br/>final report"] --> R3(["Result"]) --> S3(["Person<br/>sign-off"])
+    LOG --> W["Writer<br/>final report"] --> VF["Reviewers + adversary<br/>final report"] --> R3(["Result"]) -.-> S3(["Person sign-off<br/>if the result drives a decision"])
     L3 -. escalate .-> P3
   end
   M1 ~~~ M2 ~~~ M3
@@ -53,7 +53,7 @@ flowchart LR
   class A3 optadv
 ```
 
-Blue: leader, which decides and routes. Green: doers. Orange: reviewers. Red: adversary. Purple: the person. Dark: results and the shared log. Dashed boxes are optional; dashed arrows send work back.
+Blue: leader, which decides and routes. Green: doers. Orange: reviewers. Red: adversary. Purple: the person. Dark: results and the shared log. Dashed boxes are optional; dashed arrows send work back, or happen only when needed (sign-off).
 
 ## Install
 
@@ -77,7 +77,7 @@ Blue: leader, which decides and routes. Green: doers. Orange: reviewers. Red: ad
 2. Add one line to your `CLAUDE.md` or `AGENTS.md`, so the skill loads whenever it matters:
 
    ```
-   For research, simulation or quantitative analysis whose result someone will rely on, use the mission-leader skill.
+   Use the mission-leader skill for research, simulation, data analysis, or modelling whose result someone will rely on, and whenever such a task looks too long, too risky, or too uncertain for a single answer. Not for routine code changes.
    ```
 
 3. Start a task. The first time the skill runs, it asks a few set-up questions (which models to use and how to reach models from other providers) and, with your OK, saves the answers in that same file.

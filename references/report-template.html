@@ -1,0 +1,148 @@
+<!doctype html>
+<!--
+  mission-leader report template (modes 2 and 3).
+  Fill every {{placeholder}}; repeat the marked blocks as needed; delete blocks that do not apply
+  (say so under Limitations instead of leaving them empty). Keep it one self-contained file:
+  no external scripts or styles. Every number on the page must also appear, with its source or
+  check, in the Evidence section. Links to sources open in a new tab.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{Short title}}</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#5f6368; --line:#e3e3e3; --card:#f6f7f9;
+          --accent:#1d4ed8; --ok:#15803d; --warn:#b45309; --bad:#b91c1c; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+          --bg:#121417; --fg:#e8eaed; --muted:#9aa0a6; --line:#2f3336; --card:#1b1e22;
+          --accent:#7aa2ff; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; } }
+  :root[data-theme="dark"] { --bg:#121417; --fg:#e8eaed; --muted:#9aa0a6; --line:#2f3336; --card:#1b1e22;
+          --accent:#7aa2ff; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:1.4rem; margin:0 0 8px; }
+  a { color:var(--accent); }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+  .badge { font-size:.8rem; padding:2px 8px; border-radius:999px; border:1px solid var(--line); }
+  .ok { color:var(--ok); } .warn { color:var(--warn); } .bad { color:var(--bad); }
+  .answer { background:var(--card); border-left:4px solid var(--accent); padding:12px 16px; font-weight:600; }
+  .meta { color:var(--muted); font-size:.9rem; margin:8px 0 20px; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px; margin-bottom:20px; }
+  .tile { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+          text-align:left; color:inherit; font:inherit; cursor:pointer; }
+  .tile b { display:block; font-size:1.3rem; }
+  .tile span { color:var(--muted); font-size:.85rem; }
+  [popover] { max-width:min(420px, 90vw); border:1px solid var(--line); border-radius:8px;
+              background:var(--bg); color:var(--fg); padding:12px 14px; }
+  .term { background:none; border:0; padding:0; font:inherit; color:inherit;
+          text-decoration:underline dotted; cursor:help; }
+  details { border-top:1px solid var(--line); padding:10px 0; }
+  summary { cursor:pointer; font-weight:600; }
+  details details { border:0; padding:4px 0 4px 16px; }
+  details details summary { font-weight:500; }
+  table { width:100%; border-collapse:collapse; font-size:.92rem; margin-top:8px; }
+  th, td { text-align:left; border-bottom:1px solid var(--line); padding:6px 4px; vertical-align:top; }
+  .scroll { overflow-x:auto; }
+  .tag { font-size:.75rem; padding:1px 6px; border-radius:4px; border:1px solid currentColor; }
+  svg text { fill:var(--fg); font-size:12px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>{{Question, as the person asked it}}</h1>
+<div class="badges">
+  <span class="badge">Mode {{2|3}}</span>
+  <span class="badge ok">{{Verified | Partly verified | Not verified}}</span>
+  <span class="badge warn">Sign-off: {{not required | pending | name, date}}</span>
+</div>
+<div class="answer">{{The answer in one or two sentences.}}</div>
+<div class="meta">{{YYYY-MM-DD}} · {{mission name}}</div>
+
+<!-- Key numbers: 2 to 6 tiles. Each opens a popup with the value's source and how it was checked.
+     When repeating, use unique matching IDs and targets: k1, k2, ... -->
+<div class="tiles">
+  <!-- repeat: tile -->
+  <button class="tile" popovertarget="k1"><b>{{value + unit}}</b><span>{{what it is}}</span></button>
+  <div id="k1" popover><b>{{what it is}}</b><br>Source: {{source}} <a href="{{url}}" target="_blank" rel="noopener">↗</a><br>Check: {{how it was checked}}</div>
+  <!-- /repeat -->
+</div>
+
+<details open>
+  <summary>Highlights</summary>
+  <ul>
+    <!-- 3 to 5 bullets. Wrap each term readers may not know in a button and popup,
+         using unique matching IDs and targets: t1, t2, ... -->
+    <li>{{Finding with a <button class="term" popovertarget="t1">term</button>.}}</li>
+  </ul>
+  <div id="t1" popover>{{One-line definition of the term.}}</div>
+</details>
+
+<details>
+  <summary>Evidence</summary>
+  <div class="scroll"><table>
+    <tr><th>Claim</th><th>Check</th><th>Result</th><th>Source</th></tr>
+    <!-- repeat: one row per claim; Check says measurement, another model, rerun, known case, etc. -->
+    <tr><td>{{claim}}</td><td>{{check}}</td><td class="ok">{{passed | failed | not run}}</td>
+        <td><a href="{{url}}" target="_blank" rel="noopener">{{short source}}</a></td></tr>
+  </table></div>
+</details>
+
+<details>
+  <summary>Figures</summary>
+  <!-- Inline SVG; give each mark a <title> so hovering shows its value. Example bar: -->
+  <figure>
+    <svg viewBox="0 0 400 120" width="100%" role="img" aria-label="{{figure description}}">
+      <rect x="10" y="20" width="200" height="24" fill="var(--accent)"><title>{{label}}: {{value}}</title></rect>
+      <text x="216" y="37">{{label}}</text>
+    </svg>
+    <figcaption>{{Caption: what to see in it.}}</figcaption>
+  </figure>
+</details>
+
+<details>
+  <summary>Limitations</summary>
+  <ul>
+    <!-- repeat; tag each line -->
+    <li><span class="tag ok">verified</span> {{what was checked}}</li>
+    <li><span class="tag warn">assumed</span> {{assumption and why}}</li>
+    <li><span class="tag bad">not checked</span> {{what could not be checked, and the check that should follow}}</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Reviewer findings</summary>
+  <div class="scroll"><table>
+    <tr><th>Issue</th><th>Severity</th><th>Reviewer</th><th>Status</th></tr>
+    <!-- repeat -->
+    <tr><td>{{issue}}</td><td>{{major | minor}}</td><td>{{reviewer, model}}</td><td>{{fixed | listed as limitation}}</td></tr>
+  </table></div>
+</details>
+
+<details>
+  <summary>Method</summary>
+  <!-- repeat: one nested block per step -->
+  <details>
+    <summary>{{Step: what was done}}</summary>
+    <p>{{Detail: inputs, tool or script, key choices.}}</p>
+  </details>
+</details>
+
+<details>
+  <summary>Sources</summary>
+  <ol>
+    <!-- repeat -->
+    <li><a href="{{url or DOI link}}" target="_blank" rel="noopener">{{author, title, year}}</a> — {{what it supports}}</li>
+  </ol>
+</details>
+
+<details>
+  <summary>Cost</summary>
+  <p>Mode {{2|3}} · {{n}} agents · {{tokens, or "unknown" for calls that did not report them}} · {{wall time}}</p>
+</details>
+
+</main>
+</body>
+</html>

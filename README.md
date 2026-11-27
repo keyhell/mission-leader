@@ -21,18 +21,19 @@ flowchart LR
   end
   subgraph M2["Mode 2 · Work and review"]
     direction TB
-    P2(["Person<br/>task"]) --> L2["Leader<br/>decides, staffs"] --> D2["Doer<br/>leader or stronger model"] --> V2["Reviewer<br/>fresh context"] --> R2(["Result"])
+    P2(["Person<br/>task + start questions"]) --> L2["Leader<br/>reads lessons, decides, staffs"] --> D2["Doer<br/>leader or stronger model"] --> V2["Reviewer<br/>fresh context"] --> R2(["Report page<br/>+ lesson line"]) -.-> S2(["Person sign-off<br/>if the result drives a decision"])
     V2 -. redo .-> D2
     O2["Reviewer<br/>other model family"] -.- V2
+    L2 -. escalate .-> P2
   end
   subgraph M3["Mode 3 · Mission loop"]
     direction TB
-    P3(["Person<br/>task + start questions"]) --> L3["Leader<br/>routes, applies rules"] --> PL["Planner<br/>subtasks ranked by impact<br/>on the result"] --> VP["Reviewer<br/>plan"]
+    P3(["Person<br/>task + start questions"]) --> L3["Leader<br/>reads lessons, routes, applies rules"] --> PL["Planner<br/>subtasks ranked by impact<br/>on the result"] --> VP["Reviewer<br/>plan"]
     VP --> EX["Executors<br/>one per subtask"] --> VE["Reviewers<br/>every step"] --> LOG[("Log<br/>results, verdicts, dependencies")]
     VE -. redo .-> EX
     LOG -. reopen .-> EX
     A3["Adversary<br/>key steps"] -.- VE
-    LOG --> W["Writer<br/>final report"] --> VF["Reviewers + adversary<br/>final report"] --> R3(["Result"]) -.-> S3(["Person sign-off<br/>if the result drives a decision"])
+    LOG --> W["Writer<br/>final report"] --> VF["Reviewers + adversary<br/>final report"] --> R3(["Report page<br/>+ lesson line"]) -.-> S3(["Person sign-off<br/>if the result drives a decision"])
     L3 -. escalate .-> P3
   end
   M1 ~~~ M2 ~~~ M3
@@ -49,7 +50,7 @@ flowchart LR
   class L1 leaderdoer
   class D2,PL,EX,W doer
   class V2,VP,VE,VF reviewer
-  class P1,P2,P3,S3 person
+  class P1,P2,P3,S2,S3 person
   class R1,R2,R3,LOG infra
   class O2 optional
   class A3 optadv
